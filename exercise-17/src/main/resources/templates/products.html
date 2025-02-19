@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: system-ui;
+            display: grid;
+            place-content: center;
+        }
+    </style>
+</head>
+<body>
+<h1>Products</h1>
+<section>
+    <h2>Add a product</h2>
+    <form action="/products" method="post">
+        <label>
+            Name:
+            <input type="text" name="name"/>
+        </label>
+        <br/>
+        <label>
+            Price:
+            <input type="number" step="any" name="price"/>
+        </label>
+        <br/>
+        <button type="submit">Add Product</button>
+
+    </form>
+</section>
+<section>
+    <h2>View Products</h2>
+    <table>
+        <tr>
+            <th>Product Name</th>
+            <th>Product Price</th>
+        </tr>
+        <tr th:each="p : ${products}">
+            <td th:text="${p.getName()}"></td>
+            <td th:text="${p.getPrice()}"></td>
+        </tr>
+    </table>
+</section>
+</body>
+</html>
